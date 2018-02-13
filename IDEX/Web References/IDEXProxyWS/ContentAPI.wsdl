@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="UploadNormalText">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="User" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LinkID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ChannelID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Data" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadNormalTextResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UploadNormalTextResult" type="tns:Result" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Result">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MAPID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UploadSMSLink5">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="User" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="KEY" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LinkID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ChannelID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Files" type="tns:SMSFileObjects" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SMSFileObjects">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="JSON" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateToSend" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Files" type="tns:ArrayOfFileObject" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfFileObject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FileObject" nillable="true" type="tns:FileObject" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FileObject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FileBinary" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="Filename" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileEXT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message3" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UploadSMSLink5Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UploadSMSLink5Result" type="tns:Response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Response">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MAPID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Result" nillable="true" type="tns:Result" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="UploadNormalTextSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadNormalText" />
+  </wsdl:message>
+  <wsdl:message name="UploadNormalTextSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadNormalTextResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadSMSLink5SoapIn">
+    <wsdl:part name="parameters" element="tns:UploadSMSLink5" />
+  </wsdl:message>
+  <wsdl:message name="UploadSMSLink5SoapOut">
+    <wsdl:part name="parameters" element="tns:UploadSMSLink5Response" />
+  </wsdl:message>
+  <wsdl:message name="UploadNormalTextHttpGetIn">
+    <wsdl:part name="User" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+    <wsdl:part name="LinkID" type="s:string" />
+    <wsdl:part name="ChannelID" type="s:string" />
+    <wsdl:part name="Data" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UploadNormalTextHttpGetOut">
+    <wsdl:part name="Body" element="tns:Result" />
+  </wsdl:message>
+  <wsdl:message name="UploadNormalTextHttpPostIn">
+    <wsdl:part name="User" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+    <wsdl:part name="LinkID" type="s:string" />
+    <wsdl:part name="ChannelID" type="s:string" />
+    <wsdl:part name="Data" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UploadNormalTextHttpPostOut">
+    <wsdl:part name="Body" element="tns:Result" />
+  </wsdl:message>
+  <wsdl:portType name="ContentSoap">
+    <wsdl:operation name="UploadNormalText">
+      <wsdl:input message="tns:UploadNormalTextSoapIn" />
+      <wsdl:output message="tns:UploadNormalTextSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadSMSLink5">
+      <wsdl:input message="tns:UploadSMSLink5SoapIn" />
+      <wsdl:output message="tns:UploadSMSLink5SoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ContentHttpGet">
+    <wsdl:operation name="UploadNormalText">
+      <wsdl:input message="tns:UploadNormalTextHttpGetIn" />
+      <wsdl:output message="tns:UploadNormalTextHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ContentHttpPost">
+    <wsdl:operation name="UploadNormalText">
+      <wsdl:input message="tns:UploadNormalTextHttpPostIn" />
+      <wsdl:output message="tns:UploadNormalTextHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ContentSoap" type="tns:ContentSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UploadNormalText">
+      <soap:operation soapAction="http://tempuri.org/UploadNormalText" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadSMSLink5">
+      <soap:operation soapAction="http://tempuri.org/UploadSMSLink5" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ContentSoap12" type="tns:ContentSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UploadNormalText">
+      <soap12:operation soapAction="http://tempuri.org/UploadNormalText" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadSMSLink5">
+      <soap12:operation soapAction="http://tempuri.org/UploadSMSLink5" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ContentHttpGet" type="tns:ContentHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="UploadNormalText">
+      <http:operation location="/UploadNormalText" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ContentHttpPost" type="tns:ContentHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="UploadNormalText">
+      <http:operation location="/UploadNormalText" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Content">
+    <wsdl:port name="ContentSoap" binding="tns:ContentSoap">
+      <soap:address location="@APIURL/Content.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ContentSoap12" binding="tns:ContentSoap12">
+      <soap12:address location="@APIURL/Content.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ContentHttpGet" binding="tns:ContentHttpGet">
+      <http:address location="@APIURL/Content.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ContentHttpPost" binding="tns:ContentHttpPost">
+      <http:address location="@APIURL/Content.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
